@@ -1,0 +1,17 @@
+[usr]
+	name = michaelegregious
+[user]
+	name = michaelegregious
+	email = lil.gordie@gmail.com
+[core]
+	excludesfile = /Users/michaelbush/.gitignore_global
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[alias]
+    peel = "!f() { git reset --soft HEAD^; git diff --staged --name-only | xargs git reset HEAD ;}; f"
+
+[init]
+	defaultBranch = main
