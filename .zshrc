@@ -120,9 +120,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# The next line is used by BenchPrep's V2 repo
-export PROJECT_DIR="/Users/michaelbush/projects/bp"
-
 # This stuff used by /bp/cucumber-blueprint
 alias copyusers='mmv -c "config/environments/*.yml.example" "config/environments/#1.yml"'
 alias cukeadmin='export VALID_PASSWORD="p4ssword"; export INVALID_PASSWORD="notapass"; export AUTH_TOKEN="{2voG6L/XmS02pBDWo6mQCGwtO1jPPyvjeJ3b8Xoi}"'
@@ -143,3 +140,18 @@ alias bek="bundle exec rake"
 alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
 alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
 export PATH="/usr/local/sbin:$PATH"
+
+# The next line is used by BenchPrep's V2 repo
+export PROJECT_DIR="/Users/michaelbush/projects/bp"
+
+# docker compose concierge
+alias dcc=$PROJECT_DIR/infrastructure/dev/dcc
+
+# WMX/infrastructure docker setup (see doc/how_to_guides/dev_containers/set_up_guide.md)
+__is_apple_m1() {
+  [[ "$(type arch)" > /dev/null ]] && [[ "$(arch)" == "arm64" ]]
+}
+
+if __is_apple_m1; then
+  export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
+fi
