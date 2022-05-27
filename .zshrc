@@ -147,11 +147,13 @@ export PROJECT_DIR="/Users/michaelbush/projects/bp"
 # docker compose concierge
 alias dcc=$PROJECT_DIR/infrastructure/dev/dcc
 
+# Just for reference, the conditional to detect for m1 architecture:
 # WMX/infrastructure docker setup (see doc/how_to_guides/dev_containers/set_up_guide.md)
-__is_apple_m1() {
-  [[ "$(type arch)" > /dev/null ]] && [[ "$(arch)" == "arm64" ]]
-}
+# __is_apple_m1() {
+#   [[ "$(type arch)" > /dev/null ]] && [[ "$(arch)" == "arm64" ]]
+# }
 
-if __is_apple_m1; then
-  export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
-fi
+# if __is_apple_m1; then
+#   export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
+# fi
+export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
