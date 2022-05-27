@@ -1,0 +1,35 @@
+---
+service_group_aliases:
+  mine:
+    - benchprep-v2
+    - benchprep-marketing
+    - benchprep-webapp
+    - benchprep-sso
+
+  console:
+    - benchprep-v2
+    - benchprep-console
+    - benchprep-marketing
+    - benchprep-sso
+    - benchprep-user-manager
+    - postgres
+    - redis
+    - nginx
+
+  webapp:
+    - benchprep-v2
+    - benchprep-marketing
+    - benchprep-webapp
+    - benchprep-webapp-webpack
+    - postgres
+    - redis
+    - nginx
+
+command_group_aliases:
+  wipe:
+    - stop
+    - clean
+  refresh:
+    - bundle
+    - package
+    - restart
