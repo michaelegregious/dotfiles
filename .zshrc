@@ -135,6 +135,7 @@ alias prmt="pry-remote -w"
 
 alias d="docker"
 alias dc="docker-compose"
+alias deit="docker exec -it"
 alias be="bundle exec"
 alias bek="bundle exec rake"
 alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
