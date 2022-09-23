@@ -1,17 +1,25 @@
-[usr]
-	name = michaelegregious
 [user]
 	name = michaelegregious
-	email = lil.gordie@gmail.com
+ 	email = lil.gordie@gmail.com
 [core]
-	excludesfile = /Users/michaelbush/.gitignore_global
+  	excludesfile = /Users/michaelbush/.gitignore_global	
+  	# makes vsc diff viewer, etc.
+ 	# editor = code --wait
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 [alias]
-    peel = "!f() { git reset --soft HEAD^; git diff --staged --name-only | xargs git reset HEAD ;}; f"
-
+	peel = "!f() { git reset --soft HEAD^; git diff --staged --name-only | xargs git reset HEAD ;}; f"
+	# vsc config
 [init]
 	defaultBranch = main
+[diff]
+	tool = default-difftool 
+[difftool "default-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = code
+[mergetool "code"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
