@@ -1,0 +1,48 @@
+# This file lets you customize your shell environment inside the
+# service containers.
+
+# set some common aliases
+alias h=history
+alias a=alias
+alias la='ls -A'
+alias l='ls -lAh'
+alias ll='ls -lh'
+
+alias be="bundle exec"
+alias bek="bundle exec rake"
+alias ber='bundle exec rspec'
+alias r='bundle exec rails'
+
+# don't put duplicate lines or lines starting with space in the history.
+# also ignore certain commands when adding to history
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+HISTIGNORE="&:bg:fg:rm *:ls:ll:h:history"
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# append to the history file, don't overwrite it
+# we want the history to live across terminal sessions
+shopt -s histappend
+
+# correct simple spelling error in cd commands
+shopt -s cdspell
+
+# show the container's prompt hostname in the prompt
+# the PROMPT_HOSTNAME is defined in docker-compose.yml
+PROMPT_HOSTNAME="${PROMPT_HOSTNAME:-$(hostname)}"
+export PS1="[\u@${PROMPT_HOSTNAME} ${BOLD}${GREEN}dev${RESET_COLOR} \w]# "
+
+# An example of how to check if a favorite utility is installed
+# and if not, install it.
+#
+# if ! command -v tree &> /dev/null
+# then
+#   apk add --no-cache tree
+# fi
+#
+# alias t2='tree -L 2'
+# alias t3='tree -L 3'
+# alias t4='tree -L 4'
