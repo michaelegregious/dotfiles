@@ -12,7 +12,7 @@
 	clean = git-lfs clean -- %f
 [alias]
 	peel = "!f() { git reset --soft HEAD^; git diff --staged --name-only | xargs git reset HEAD ;}; f"
-	# vsc config
+	ss = stash show -v
 [init]
 	defaultBranch = main
 [diff]

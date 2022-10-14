@@ -8,7 +8,7 @@ export ZSH="/Users/michaelbush/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -136,11 +136,12 @@ alias prmt="pry-remote -w"
 alias d="docker"
 alias dc="docker-compose"
 alias deit="docker exec -it"
-alias dps="docker ps -a --format 'table{{ .ID }}\t{{ .RunningFor }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
+alias dps="docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
 alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias bek="bundle exec rake"
 alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
+alias infra="cd /Users/michaelbush/projects/bp/infrastructure
 alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
 export PATH="/usr/local/sbin:$PATH"
 
