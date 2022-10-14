@@ -9,6 +9,7 @@ export ZSH="/Users/michaelbush/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="random"
+# liked so far: 'bira'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -103,6 +104,9 @@ bindkey -v
 # Git aliases
 alias gsmu="git submodule update"
 alias gap="git add -p"
+alias gsd="git stash drop"
+alias gss="git ss"
+alias gcop="gco -p"
 
 # Enable go modules feature
 export GO111MODULE=on

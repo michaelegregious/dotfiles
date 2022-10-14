@@ -13,6 +13,7 @@
 [alias]
 	peel = "!f() { git reset --soft HEAD^; git diff --staged --name-only | xargs git reset HEAD ;}; f"
 	ss = stash show -v
+	sl = stash list
 [init]
 	defaultBranch = main
 [diff]
