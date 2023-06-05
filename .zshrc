@@ -8,8 +8,8 @@ export ZSH="/Users/michaelbush/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="random"
-# liked so far: 'bira'
+ZSH_THEME="robbyrussell"
+# liked so far: 'bira', 'wuffers', 'garyblessington', 'simple'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -146,19 +146,41 @@ alias d="docker"
 alias dc="docker-compose"
 alias deit="docker exec -it"
 alias dps="docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
+alias wdps="watch docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
+
 alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias bek="bundle exec rake"
+
 alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
-alias infra="cd /Users/michaelbush/projects/bp/infrastructure
+alias console="cd ~/projects/bp/benchprep-console"
+alias infra="cd /Users/michaelbush/projects/bp/infrastructure"
 alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
 export PATH="/usr/local/sbin:$PATH"
+
+function dev-locales () {
+  docker exec benchprep-v2 bundle exec rake locales:import_deploy
+  docker exec benchprep-v2 bundle exec rails runner "Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run"
+}
+
+function v2-prep () {
+  echo "\nSTEP 1: bundle\n"
+  docker exec benchprep-v2 bundle
+  echo "\nSTEP 2: db:migrate\n"
+  docker exec benchprep-v2 bundle exec rake db:migrate
+  echo "\nSTEP 3: db:test:prepare\n"
+  docker exec benchprep-v2 bundle exec rake db:test:prepare
+  echo "\nSTEP 4: db:repair_sequences\n"
+  docker exec benchprep-v2 bundle exec rake db:repair_sequences
+  echo "\nSTEP 5: onesie:run_all\n"
+  docker exec benchprep-v2 bundle exec rake onesie:run_all
+}
 
 # The next line is used by BenchPrep's V2 repo
 export PROJECT_DIR="/Users/michaelbush/projects/bp"
 
 # docker compose concierge
-alias dcc=$PROJECT_DIR/infrastructure/dev/dcc
+alias dcc="$PROJECT_DIR/infrastructure/dev/dcc"
 
 # Just for reference, the conditional to detect for m1 architecture:
 # WMX/infrastructure docker setup (see doc/how_to_guides/dev_containers/set_up_guide.md)
@@ -170,3 +192,5 @@ alias dcc=$PROJECT_DIR/infrastructure/dev/dcc
 #   export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
 # fi
 export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
+
+export MAIL_SAFE_EMAIL="mbush@benchprep.com"
