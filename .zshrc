@@ -154,6 +154,7 @@ alias bek="bundle exec rake"
 
 alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
 alias console="cd ~/projects/bp/benchprep-console"
+alias webapp="cd ~/projects/bp/benchprep-webapp"
 alias infra="cd /Users/michaelbush/projects/bp/infrastructure"
 alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
 export PATH="/usr/local/sbin:$PATH"
@@ -175,6 +176,7 @@ function v2-prep () {
   echo "\nSTEP 5: onesie:run_all\n"
   docker exec benchprep-v2 bundle exec rake onesie:run_all
 }
+
 
 # The next line is used by BenchPrep's V2 repo
 export PROJECT_DIR="/Users/michaelbush/projects/bp"
