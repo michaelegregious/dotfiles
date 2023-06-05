@@ -102,11 +102,16 @@ bindkey -v
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Git aliases
+alias gcanv="git commit --amend --no-verify"
 alias gsmu="git submodule update"
 alias gap="git add -p"
 alias gsd="git stash drop"
 alias gss="git ss"
+alias gsap="git checkout -p stash@{0}"
+alias gsp="git stash pop"
 alias gcop="gco -p"
+alias gsl="git stash list"
+alias gsiu="git stash --include-untracked"
 
 # Enable go modules feature
 export GO111MODULE=on

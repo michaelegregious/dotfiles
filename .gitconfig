@@ -2,22 +2,24 @@
 	name = michaelegregious
  	email = lil.gordie@gmail.com
 [core]
-  	excludesfile = /Users/michaelbush/.gitignore_global	
+  	excludesfile = /Users/michaelbush/.gitignore_global
   	# makes vsc diff viewer, etc.
- 	# editor = code --wait
+ 		# editor = code --wait
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
+	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
 	required = true
-	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [alias]
+	branch-name = "branch --show-current"
 	peel = "!f() { git reset --soft HEAD^; git diff --staged --name-only | xargs git reset HEAD ;}; f"
-	ss = stash show -v
 	sl = stash list
+	ss = stash show -v
+ 	ship = "!if [ $(git branch-name) == 'release_candidate' ] || [ $(git branch-name) == 'master' ]; then echo on $(git branch-name), refusing to ship; else git push origin $(git branch-name); fi"
 [init]
 	defaultBranch = main
 [diff]
-	tool = default-difftool 
+	tool = default-difftool
 [difftool "default-difftool"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
