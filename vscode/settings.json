@@ -1,0 +1,104 @@
+{
+  "editor.minimap.enabled": false,
+  "workbench.activityBar.visible": true,
+  "files.autoSave": "onFocusChange",
+
+  // eslint
+  "eslint.options": {
+    "overrideConfigFile": "/Users/michaelbush/.eslintrc.json"
+  },
+
+  "emmet.includeLanguages": {
+    "erb": "html",
+    "ruby": "html"
+  },
+  "html.format.templating": true,
+
+  "eslint.packageManager": "yarn",
+
+  "javascript.validate.enable": false,
+
+  "editor.matchBrackets": "never",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "Menlo, Monaco",
+  "terminal.integrated.fontWeight": "300",
+  "terminal.integrated.scrollback": 20000,
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 120,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[xml]": {},
+  "debug.console.wordWrap": false,
+  "editor.wordWrap": "bounded",
+  "editor.fontFamily": " Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": false,
+  "editor.fontWeight": "500",
+  "workbench.fontAliasing": "auto",
+  "workbench.editor.labelFormat": "short",
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "files.associations": {
+    "*.html.erb": "erb"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  // "[vue]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[jsonc]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "git.pullTags": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.accessibilitySupport": "off",
+  "ruby.codeCompletion": "rcodetools",
+  "solargraph.bundlerPath": "/Users/michaelbush/.rbenv/shims/bundle",
+  "solargraph.commandPath": "/Users/michaelbush/.rbenv/shims/solargraph",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.titleBarStyle": "native",
+  "editor.snippetSuggestions": "top",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.windows": "",
+  "debug.javascript.terminalOptions": {
+    "skipFiles": [
+      "<node_internals>/**",
+      "${workspaceFolder}/<node_internals>/**",
+      "${workspaceFolder}/node_modules/**"
+    ]
+  },
+  "vetur.experimental.templateInterpolationService": true,
+  "volar.inlayHints.eventArgumentInInlineHandlers": false,
+  "ruby.useLanguageServer": true,
+  "git.openRepositoryInParentFolders": "never",
+  "breadcrumbs.symbolPath": "off",
+  "vim.statusBarColorControl": false,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#007acc",
+    "statusBar.noFolderBackground": "#007acc",
+    "statusBar.debuggingBackground": "#007acc"
+  },
+  // "prettier.requireConfig": true,
+  "html.format.enable": false,
+  "json.format.enable": false,
+  "javascript.format.enable": true,
+  "typescript.format.enable": false,
+  // "css.format.enable": false,
+  // "less.format.enable": false,
+  // "scss.format.enable": false,
+  "markdown.extension.tableFormatter.enabled": false,
+  "editor.fontSize": 11,
+  "window.zoomLevel": 1,
+  "eslint.format.enable": true,
+  "prettier.arrowParens": "avoid",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
