@@ -88,10 +88,10 @@
     "statusBar.debuggingBackground": "#007acc"
   },
   // "prettier.requireConfig": true,
-  "html.format.enable": false,
-  "json.format.enable": false,
-  "javascript.format.enable": true,
-  "typescript.format.enable": false,
+  // "html.format.enable": false,
+  // "json.format.enable": false,
+  // "javascript.format.enable": true,
+  // "typescript.format.enable": false,
   // "css.format.enable": false,
   // "less.format.enable": false,
   // "scss.format.enable": false,
@@ -100,5 +100,5 @@
   "window.zoomLevel": 1,
   "eslint.format.enable": true,
   "prettier.arrowParens": "avoid",
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

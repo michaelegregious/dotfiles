@@ -164,6 +164,15 @@ function dev-locales () {
   docker exec benchprep-v2 bundle exec rails runner "Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run"
 }
 
+function dev-integration-locales () {
+  docker exec benchprep-v2 bundle exec rails runner "
+    response = Typhoeus.get('https://integration.benchprep.com/api/v1/branding/benchprep/locales/en-us');
+    locales = JSON.parse(response.body);
+    LocaleDefault.find(11).update(locales: locales)
+    Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run
+  "
+}
+
 function v2-prep () {
   echo "\nSTEP 1: bundle\n"
   docker exec benchprep-v2 bundle
@@ -176,7 +185,6 @@ function v2-prep () {
   echo "\nSTEP 5: onesie:run_all\n"
   docker exec benchprep-v2 bundle exec rake onesie:run_all
 }
-
 
 # The next line is used by BenchPrep's V2 repo
 export PROJECT_DIR="/Users/michaelbush/projects/bp"
