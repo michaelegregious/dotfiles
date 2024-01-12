@@ -201,6 +201,8 @@ alias dcc="$PROJECT_DIR/infrastructure/dev/dcc"
 # if __is_apple_m1; then
 #   export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
 # fi
-export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
 
+# export PATH="/Users/michaelbush/Library/Python/3.9/bin"
+
+export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
 export MAIL_SAFE_EMAIL="mbush@benchprep.com"
