@@ -138,6 +138,7 @@ alias cukeadmin='export VALID_PASSWORD="p4ssword"; export INVALID_PASSWORD="nota
 
 # This line sets up some useful aliases and helpers for benchPrep
 source "/Users/michaelbush/projects/bp/infrastructure/shell-includes/helpers"
+source "/Users/michaelbush/projects/bp/development/shell-includes/helpers"
 
 # This next line is used by rbenv (ruby version manager)
 eval "$(rbenv init -)"
@@ -155,11 +156,13 @@ alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias bek="bundle exec rake"
 
-alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
+alias blueprint="cd ~/projects/bp/benchprep-course-publisher"
 alias console="cd ~/projects/bp/benchprep-console"
-alias webapp="cd ~/projects/bp/benchprep-webapp"
 alias infra="cd /Users/michaelbush/projects/bp/infrastructure"
 alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
+alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
+alias webapp="cd ~/projects/bp/benchprep-webapp"
+
 export PATH="/usr/local/sbin:$PATH"
 
 function dev-locales () {
@@ -192,8 +195,10 @@ function v2-prep () {
 # The next line is used by BenchPrep's V2 repo
 export PROJECT_DIR="/Users/michaelbush/projects/bp"
 
+export KUBE_CONFIG_PATH="~/.kube/config"
+
 # docker compose concierge
-alias dcc="$PROJECT_DIR/infrastructure/dev/dcc"
+alias dcc="$PROJECT_DIR/development/dcc"
 
 # Just for reference, the conditional to detect for m1 architecture:
 # WMX/infrastructure docker setup (see doc/how_to_guides/dev_containers/set_up_guide.md)
