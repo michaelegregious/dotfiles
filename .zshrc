@@ -113,6 +113,9 @@ alias gcop="gco -p"
 alias gsl="git stash list"
 alias gsiu="git stash --include-untracked"
 
+# Makes pipx (python) installed packages available in the PATH
+export PATH="/Users/michaelbush/.local/bin:$PATH"
+
 # Enable go modules feature
 export GO111MODULE=on
 # Set the GOPROXY env variable
