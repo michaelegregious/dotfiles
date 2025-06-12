@@ -9,7 +9,7 @@ export ZSH="/Users/michaelbush/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-# liked so far: 'bira', 'wuffers', 'garyblessington', 'simple'
+# liked so far: 'bira', 'wuffers', 'garyblessington', 'simple', 'robbyrussell'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -113,9 +113,6 @@ alias gcop="gco -p"
 alias gsl="git stash list"
 alias gsiu="git stash --include-untracked"
 
-# Makes pipx (python) installed packages available in the PATH
-export PATH="/Users/michaelbush/.local/bin:$PATH"
-
 # Enable go modules feature
 export GO111MODULE=on
 # Set the GOPROXY env variable
@@ -132,85 +129,28 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# This stuff used by /bp/cucumber-blueprint
-alias copyusers='mmv -c "config/environments/*.yml.example" "config/environments/#1.yml"'
-alias cukeadmin='export VALID_PASSWORD="p4ssword"; export INVALID_PASSWORD="notapass"; export AUTH_TOKEN="{2voG6L/XmS02pBDWo6mQCGwtO1jPPyvjeJ3b8Xoi}"'
+# BenchPrep helpers
+source "/Users/michaelbush/.dotfiles/.benchprep"
 
-# This line sets up some useful aliases and helpers for benchPrep
-source "/Users/michaelbush/projects/bp/infrastructure/shell-includes/helpers"
-source "/Users/michaelbush/projects/bp/development/shell-includes/helpers"
+# Educational - Professional Development
+#
+# For High Performance PostgreSQL for Rails
+export DATABASE_URL="postgres://owner:@localhost:6432/rideshare_development"
+export DB_URL="postgres://postgres:@localhost:6432/postgres"
 
-# This next line is used by rbenv (ruby version manager)
-eval "$(rbenv init -)"
+# Set PGDATA for pg_ctl
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
-# assorted helpers
-alias prmt="pry-remote -w"
+export PGDATA="$(psql -U postgres \
+  -p 6432 \
+  -c 'SHOW data_directory' \
+  --tuples-only | sed 's/^[ \t]*//')"
+  echo "Set PGDATA: $PGDATA"
 
-alias d="docker"
-alias dc="docker-compose"
-alias deit="docker exec -it"
-alias dps="docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
-alias wdps="watch docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
-alias be="bundle exec"
-alias ber="bundle exec rspec"
-alias bek="bundle exec rake"
-
-alias blueprint="cd ~/projects/bp/benchprep-course-publisher"
-alias console="cd ~/projects/bp/benchprep-console"
-alias infra="cd /Users/michaelbush/projects/bp/infrastructure"
-alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
-alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
-alias webapp="cd ~/projects/bp/benchprep-webapp"
-
-export PATH="/usr/local/sbin:$PATH"
-
-function dev-locales () {
-  docker exec benchprep-v2 bundle exec rake locales:import_deploy
-  docker exec benchprep-v2 bundle exec rails runner "Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run"
-}
-
-function dev-integration-locales () {
-  docker exec benchprep-v2 bundle exec rails runner "
-    response = Typhoeus.get('https://integration.benchprep.com/api/v1/branding/benchprep/locales/en-us');
-    locales = JSON.parse(response.body);
-    LocaleDefault.find(11).update(locales: locales)
-    Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run
-  "
-}
-
-function v2-prep () {
-  echo "\nSTEP 1: bundle\n"
-  docker exec benchprep-v2 bundle
-  echo "\nSTEP 2: db:migrate\n"
-  docker exec benchprep-v2 bundle exec rake db:migrate
-  echo "\nSTEP 3: db:test:prepare\n"
-  docker exec benchprep-v2 bundle exec rake db:test:prepare
-  echo "\nSTEP 4: db:repair_sequences\n"
-  docker exec benchprep-v2 bundle exec rake db:repair_sequences
-  echo "\nSTEP 5: onesie:run_all\n"
-  docker exec benchprep-v2 bundle exec rake onesie:run_all
-}
-
-# The next line is used by BenchPrep's V2 repo
-export PROJECT_DIR="/Users/michaelbush/projects/bp"
-
-export KUBE_CONFIG_PATH="~/.kube/config"
-
-# docker compose concierge
-alias dcc="$PROJECT_DIR/development/dcc"
-
-# Just for reference, the conditional to detect for m1 architecture:
-# WMX/infrastructure docker setup (see doc/how_to_guides/dev_containers/set_up_guide.md)
-# __is_apple_m1() {
-#   [[ "$(type arch)" > /dev/null ]] && [[ "$(arch)" == "arm64" ]]
-# }
-
-# if __is_apple_m1; then
-#   export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
-# fi
-
-# export PATH="/Users/michaelbush/Library/Python/3.9/bin"
-
-export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
-export MAIL_SAFE_EMAIL="mbush@benchprep.com"
+# Makes pipx (python) installed packages available in the PATH
+export PATH="/Users/michaelbush/.local/bin:$PATH"
