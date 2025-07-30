@@ -67,6 +67,8 @@ plugins=(
   git
 )
 
+export PATH="/usr/local/sbin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -129,9 +131,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# BenchPrep helpers
-source "/Users/michaelbush/.dotfiles/.benchprep"
-
 # Educational - Professional Development
 #
 # For High Performance PostgreSQL for Rails
@@ -145,12 +144,17 @@ export PGDATA="$(psql -U postgres \
   -p 6432 \
   -c 'SHOW data_directory' \
   --tuples-only | sed 's/^[ \t]*//')"
-  echo "Set PGDATA: $PGDATA"
+  # echo "Set PGDATA: $PGDATA"
+
+export PATH="/Users/michaelbush/Library/Python/3.9/bin:$PATH"
+
+# Makes pipx (python) installed packages available in the PATH
+export PATH="/Users/michaelbush/.local/bin:$PATH"
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 
-# Makes pipx (python) installed packages available in the PATH
-export PATH="/Users/michaelbush/.local/bin:$PATH"
+# BenchPrep helpers
+source "/Users/michaelbush/.dotfiles/.benchprep"

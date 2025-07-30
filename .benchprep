@@ -1,6 +1,9 @@
+# The next line is used by BenchPrep's V2 repo
+export PROJECT_DIR="/Users/michaelbush/projects/bp"
+
 # This line sets up some useful aliases and helpers for benchPrep
-source "/Users/michaelbush/projects/bp/infrastructure/shell-includes/helpers"
-source "/Users/michaelbush/projects/bp/development/shell-includes/helpers"
+source "$PROJECT_DIR/infrastructure/shell-includes/helpers"
+source "$PROJECT_DIR/development/shell-includes/helpers"
 
 # This stuff used by /bp/cucumber-blueprint
 alias copyusers='mmv -c "config/environments/*.yml.example" "config/environments/#1.yml"'
@@ -29,8 +32,6 @@ alias support="cd /Users/michaelbush/projects/bp/benchprep-support"
 alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
 alias webapp="cd ~/projects/bp/benchprep-webapp"
 
-export PATH="/usr/local/sbin:$PATH"
-
 function dev-locales () {
   docker exec benchprep-v2 bundle exec rake locales:import_deploy
   docker exec benchprep-v2 bundle exec rails runner "Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run"
@@ -58,9 +59,6 @@ function v2-prep () {
   docker exec benchprep-v2 bundle exec rake onesie:run_all
 }
 
-# The next line is used by BenchPrep's V2 repo
-export PROJECT_DIR="/Users/michaelbush/projects/bp"
-
 export KUBE_CONFIG_PATH="~/.kube/config"
 
 # docker compose concierge
@@ -75,8 +73,6 @@ alias dcc="$PROJECT_DIR/development/dcc"
 # if __is_apple_m1; then
 #   export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
 # fi
-
-# export PATH="/Users/michaelbush/Library/Python/3.9/bin"
 
 export DOCKER_DEFAULT_PLATFORM=${DOCKER_DEFAULT_PLATFORM:-'linux/arm64'}
 export MAIL_SAFE_EMAIL="mbush@benchprep.com"

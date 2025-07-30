@@ -3,6 +3,7 @@
  	email = lil.gordie@gmail.com
 [core]
   	excludesfile = /Users/michaelbush/.gitignore_global
+	filemode = false
   	# makes vsc diff viewer, etc.
  		# editor = code --wait
 [filter "lfs"]
