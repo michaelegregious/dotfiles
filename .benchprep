@@ -59,6 +59,12 @@ function v2-prep () {
   docker exec benchprep-v2 bundle exec rake onesie:run_all
 }
 
+function v2-bundle () {
+  docker exec benchprep-v2 bundle
+  dcc restart benchprep-v2
+  dcc restart sidekiq
+}
+
 export KUBE_CONFIG_PATH="~/.kube/config"
 
 # docker compose concierge
