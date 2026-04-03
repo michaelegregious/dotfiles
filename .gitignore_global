@@ -24,3 +24,5 @@ Thumbs.db
 .aider*
 !.aider.conf.yml
 !.aiderignore
+
+.claude
