@@ -1,0 +1,6 @@
+# https://aider.chat/docs/config/aider_conf.html
+
+# git: false
+gitignore: false
+auto-commits: false
+dirty-commits: false
