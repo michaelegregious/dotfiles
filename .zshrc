@@ -158,3 +158,7 @@ eval "$(pyenv init - zsh)"
 
 # BenchPrep helpers
 source "/Users/michaelbush/.dotfiles/.benchprep"
+
+# For terraform
+# (see: https://github.com/warrensbox/terraform-switcher/issues/219#issuecomment-1105757975 )
+export PATH="$PATH:/Users/michaelbush/bin"

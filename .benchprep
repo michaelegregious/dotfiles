@@ -18,7 +18,7 @@ alias prmt="pry-remote -w"
 alias d="docker"
 alias dc="docker-compose"
 alias deit="docker exec -it"
-alias dps="docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
+alias dps="docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Names }}'"
 alias wdps="watch docker ps -a --format 'table{{ .ID }}\t{{ .Status }}\t{{ .Ports }}\t{{ .Names }}'"
 
 alias be="bundle exec"
