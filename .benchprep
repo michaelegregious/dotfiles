@@ -33,16 +33,18 @@ alias v2="cd /Users/michaelbush/projects/bp/benchprep-v2"
 alias webapp="cd ~/projects/bp/benchprep-webapp"
 
 function dev-locales () {
+  local tenant_slug="${1:-benchprep}"
   docker exec benchprep-v2 bundle exec rake locales:import_deploy
-  docker exec benchprep-v2 bundle exec rails runner "Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run"
+  docker exec benchprep-v2 bundle exec rails runner "Benchprep::Locales::CacheUpdater.new('${tenant_slug}', 'en-us').run"
 }
 
 function dev-integration-locales () {
+  local tenant_slug="${1:-benchprep}"
   docker exec benchprep-v2 bundle exec rails runner "
-    response = Typhoeus.get('https://integration.benchprep.com/api/v1/branding/benchprep/locales/en-us');
+    response = Typhoeus.get('https://integration.benchprep.com/api/v1/branding/${tenant_slug}/locales/en-us');
     locales = JSON.parse(response.body);
     LocaleDefault.find(11).update(locales: locales)
-    Benchprep::Locales::CacheUpdater.new('benchprep', 'en-us').run
+    Benchprep::Locales::CacheUpdater.new('${tenant_slug}', 'en-us').run
   "
 }
 
