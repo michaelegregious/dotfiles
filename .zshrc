@@ -138,12 +138,12 @@ export DATABASE_URL="postgres://owner:@localhost:6432/rideshare_development"
 export DB_URL="postgres://postgres:@localhost:6432/postgres"
 
 # Set PGDATA for pg_ctl
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+# export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
-export PGDATA="$(psql -U postgres \
-  -p 6432 \
-  -c 'SHOW data_directory' \
-  --tuples-only | sed 's/^[ \t]*//')"
+# export PGDATA="$(psql -U postgres \
+#   -p 6432 \
+#   -c 'SHOW data_directory' \
+#   --tuples-only | sed 's/^[ \t]*//')"
   # echo "Set PGDATA: $PGDATA"
 
 export PATH="/Users/michaelbush/Library/Python/3.9/bin:$PATH"
