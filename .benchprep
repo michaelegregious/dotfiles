@@ -62,7 +62,7 @@ function v2-prep () {
 }
 
 function v2-bundle () {
-  dcc downvols benchprep-v2 sidekiq && dcc bundle up benchprep-v2 sidekiq
+  dcc gem-dev benchprep-v2 sidekiq
 }
 
 export KUBE_CONFIG_PATH="~/.kube/config"
