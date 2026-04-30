@@ -49,15 +49,15 @@ function dev-integration-locales () {
 }
 
 function v2-prep () {
-  echo "\nSTEP 1: bundle\n"
+  echo "\n\033[0;32mSTEP 1: bundle\033[0m\n"
   docker exec benchprep-v2 bundle
-  echo "\nSTEP 2: db:migrate\n"
+  echo "\n\033[0;32mSTEP 2: db:migrate\033[0m\n"
   docker exec benchprep-v2 bundle exec rake db:migrate
-  echo "\nSTEP 3: db:test:prepare\n"
+  echo "\n\033[0;32mSTEP 3: db:test:prepare\033[0m\n"
   docker exec benchprep-v2 bundle exec rake db:test:prepare
-  echo "\nSTEP 4: db:repair_sequences\n"
+  echo "\n\033[0;32mSTEP 4: db:repair_sequences\033[0m\n"
   docker exec benchprep-v2 bundle exec rake db:repair_sequences
-  echo "\nSTEP 5: onesie:run_all\n"
+  echo "\n\033[0;32mSTEP 5: onesie:run_all\033[0m\n"
   docker exec benchprep-v2 bundle exec rake onesie:run_all
 }
 
